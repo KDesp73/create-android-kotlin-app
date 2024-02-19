@@ -9,6 +9,7 @@ import requests
 import re
 
 
+ORIG_REPO_URL = 'https://github.com/nekocode/create-android-kotlin-app'
 REPO_URL = 'https://github.com/KDesp73/create-android-kotlin-app'
 ORIGINAL_PACKAGE_NAME = 'com.example.myapplication'
 ZIP_UNIX_SYSTEM = 3
@@ -126,9 +127,9 @@ class TextProcessor:
 
 
 def fetch_latest_archive() -> bytes:
-    r = requests.get(REPO_URL + '/releases/latest', allow_redirects=False)
+    r = requests.get(ORIG_REPO_URL + '/releases/latest', allow_redirects=False)
     latest_tag = r.headers['location'].split('/')[-1]
-    archive_url = REPO_URL + '/archive/%s.zip' % latest_tag
+    archive_url = ORIG_REPO_URL + '/archive/%s.zip' % latest_tag
     return requests.get(archive_url).content
 
 
