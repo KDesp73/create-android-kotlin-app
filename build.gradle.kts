@@ -1,24 +1,5 @@
-buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:4.1.2")
-        classpath(kotlin("gradle-plugin", version = "1.4.30"))
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3")
-        classpath("com.akaita.android:easylauncher:1.3.1")
-    }
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+plugins {
+    id("com.android.application") version "8.2.2" apply false
+    id("org.jetbrains.kotlin.android") version "1.9.22" apply false
 }
-
-allprojects {
-    repositories {
-        google()
-        maven { url = uri("https://jitpack.io") }
-        jcenter()
-    }
-}
-
-tasks.register("clean", Delete::class.java, Action<Delete> {
-    delete(rootProject.buildDir)
-})
