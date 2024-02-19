@@ -29,7 +29,7 @@ if [ "$mode" == 'd' ]; then
     mode="debug"
 fi
 
-file="$project_dir/$apk/build/outputs/apk/$mode/$apk-$mode.apk"
+file="$project_dir/app/build/outputs/apk/$mode/$apk-$mode.apk"
 
 if [ ! -f "$file" ]; then
     file="$project_dir/$apk/build/outputs/apk/$mode/$apk-$mode-unsigned.apk"
