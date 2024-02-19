@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Available AVDs:"
-emulators=$(./emulator -list-avds)
+emulators=$(emulator -list-avds)
 echo "$emulators"
 
 
