@@ -9,8 +9,8 @@ import requests
 import re
 
 
-REPO_URL = 'https://github.com/nekocode/create-android-kotlin-app'
-ORIGINAL_PACKAGE_NAME = 'cn.nekocode.caka'
+REPO_URL = 'https://github.com/KDesp73/create-android-kotlin-app'
+ORIGINAL_PACKAGE_NAME = 'com.example.myapplication'
 ZIP_UNIX_SYSTEM = 3
 
 
