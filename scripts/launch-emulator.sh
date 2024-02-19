@@ -1,7 +1,5 @@
 #!/bin/bash
 
-cd ~/Android/Sdk/emulator || exit 1
-
 echo "Available AVDs:"
 emulators=$(./emulator -list-avds)
 echo "$emulators"
@@ -19,5 +17,5 @@ else
     avd_name=${emulators[avd_index]}
 fi
 
-./emulator -avd "$avd_name"
+emulator -avd "$avd_name"
 

@@ -35,6 +35,5 @@ if [ ! -f "$file" ]; then
     file="$project_dir/$apk/build/outputs/apk/$mode/$apk-$mode-unsigned.apk"
 fi
 
-cd ~/Android/Sdk/platform-tools || exit 1
-./adb install "$file" 
+adb install "$file" 
 exit 0
