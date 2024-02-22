@@ -35,5 +35,19 @@ if [ ! -f "$file" ]; then
     file="$project_dir/$apk/build/outputs/apk/$mode/$apk-$mode-unsigned.apk"
 fi
 
+printf "Install to emulator or device [e/d]: "
+read -r device
+
+if [ "$device" != 'd' ] && [ "$device" != 'emulator' ]; then
+    echo "Incorrect device. Try 'e' or 'd'"
+    exit 1
+fi
+
+if [ "$device" == 'd' ]; then
+    adb -d install "$file" 
+    exit 0
+fi
+
 adb install "$file" 
+
 exit 0
