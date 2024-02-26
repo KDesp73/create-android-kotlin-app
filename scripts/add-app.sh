@@ -1,45 +1,19 @@
 #!/bin/bash
 
-
-project_dir=$(cd "$(dirname "$0")" && pwd)
-
-
-if [ -z "$1" ]; then
-    printf "Enter name of apk to launch: "
-    read -r apk
-fi
-
-if [ -z "$2" ]; then
-    printf "Release or Debug [r/d]: "
-    read -r mode
-else
-    mode="$2"
-fi
-
-if [ "$mode" != 'r' ] && [ "$mode" != "release" ] && [ "$mode" != 'd' ] && [ "$mode" != "debug" ]; then
-    echo "Invalid build mode. Try 'release' or 'debug'"
-    exit 1
-fi
-
-if [ "$mode" == 'r' ]; then
-    mode="release"
-fi
-
-if [ "$mode" == 'd' ]; then
-    mode="debug"
-fi
-
-file="$project_dir/app/build/outputs/apk/$mode/$apk-$mode.apk"
-
-if [ ! -f "$file" ]; then
-    file="$project_dir/$apk/build/outputs/apk/$mode/$apk-$mode-unsigned.apk"
-fi
+module=$(find . -iname 'MainActivity.kt' | cut -d "/" -f2)
 
 printf "Install to emulator or device [e/d]: "
 read -r device
 
-if [ "$device" != 'd' ] && [ "$device" != 'emulator' ]; then
+if [ "$device" != 'd' ] && [ "$device" != 'e' ]; then
     echo "Incorrect device. Try 'e' or 'd'"
+    exit 1
+fi
+
+file="$module/build/output/apk/debug/$module-debug.apk"
+
+if [ ! -f "$file" ]; then
+    echo "Run './gradlew build' first"
     exit 1
 fi
 
@@ -48,6 +22,6 @@ if [ "$device" == 'd' ]; then
     exit 0
 fi
 
-adb install "$file" 
+adb install "$file"
 
 exit 0
