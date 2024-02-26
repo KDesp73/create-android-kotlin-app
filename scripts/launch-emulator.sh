@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo "Available AVDs:"
 mapfile -t emulators < <(emulator -list-avds)
-echo "${emulators[@]}"
 
 if [ "${#emulators[@]}" -eq 0 ]; then
     echo "No emulators found!"

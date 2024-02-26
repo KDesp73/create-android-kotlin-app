@@ -10,7 +10,7 @@ if [ "$device" != 'd' ] && [ "$device" != 'e' ]; then
     exit 1
 fi
 
-file="$module/build/output/apk/debug/$module-debug.apk"
+file="$module/build/outputs/apk/debug/$module-debug.apk"
 
 if [ ! -f "$file" ]; then
     echo "Run './gradlew build' first"
